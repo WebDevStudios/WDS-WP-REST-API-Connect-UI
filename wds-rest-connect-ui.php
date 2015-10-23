@@ -159,31 +159,8 @@ class WDS_REST_Connect_UI {
 	 * @return void
 	 */
 	public function hooks() {
-		register_activation_hook( __FILE__, array( $this, '_activate' ) );
-		register_deactivation_hook( __FILE__, array( $this, '_deactivate' ) );
-
 		add_action( 'init', array( $this, 'init' ) );
 	}
-
-	/**
-	 * Activate the plugin
-	 *
-	 * @since  0.1.0
-	 * @return void
-	 */
-	function _activate() {
-		// Make sure any rewrite functionality has been loaded
-		flush_rewrite_rules();
-	}
-
-	/**
-	 * Deactivate the plugin
-	 * Uninstall routines should be in uninstall.php
-	 *
-	 * @since  0.1.0
-	 * @return void
-	 */
-	function _deactivate() {}
 
 	/**
 	 * Init hooks
