@@ -1,3 +1,3 @@
-[submodule "vendor/wds-wp-json-api-connect"]
-	path = vendor/wds-wp-json-api-connect
+[submodule "includes/vendor/wds-wp-json-api-connect"]
+	path = includes/vendor/wds-wp-json-api-connect
 	url = git@github.com:WebDevStudios/WDS-WP-JSON-API-Connect.git

@@ -6,13 +6,14 @@
  */
 
 class WDSRESTCUI_Settings {
+
 	/**
-	 * Parent plugin class
+	 * Plugin's basename
 	 *
-	 * @var    class
+	 * @var    string
 	 * @since  0.1.0
 	 */
-	protected $plugin;
+	protected $plugin_basename;
 
 	/**
 	 * Option key, and option page slug
@@ -37,6 +38,14 @@ class WDSRESTCUI_Settings {
 	 * @since  0.1.0
 	 */
 	protected $title = '';
+
+	/**
+	 * WDS_WP_REST_API_Connect object
+	 *
+	 * @var    WDS_WP_REST_API_Connect
+	 * @since  0.1.0
+	 */
+	protected $api;
 
 	/**
 	 * Options Page hook
@@ -71,11 +80,10 @@ class WDSRESTCUI_Settings {
 	 * @since  0.1.0
 	 * @return void
 	 */
-	public function __construct( $plugin ) {
-		$this->plugin = $plugin;
-		$this->hooks();
-
-		$this->title = __( 'WP REST API Connect', 'wds-rest-connect-ui' );
+	public function __construct( $plugin_basename, WDS_WP_REST_API_Connect $api ) {
+		$this->plugin_basename = $plugin_basename;
+		$this->api             = $api;
+		$this->title           = __( 'WP REST API Connect', 'wds-rest-connect-ui' );
 	}
 
 	/**
@@ -87,7 +95,7 @@ class WDSRESTCUI_Settings {
 	public function hooks() {
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_action( $this->admin_menu_hook, array( $this, 'add_options_page' ) );
-		add_filter( $this->plugin_action_links_hook . $this->plugin->basename, array( $this, 'settings_link' ) );
+		add_filter( $this->plugin_action_links_hook . $this->plugin_basename, array( $this, 'settings_link' ) );
 		add_action( 'cmb2_admin_init', array( $this, 'add_options_page_metabox' ) );
 	}
 
@@ -210,6 +218,7 @@ class WDSRESTCUI_Settings {
 			'type' => 'text',
 		) );
 
+		$this->check_maybe_check_api( $cmb );
 	}
 
 	/**
@@ -233,15 +242,149 @@ class WDSRESTCUI_Settings {
 
 		delete_option( 'wp_rest_api_connect_error' );
 
-		?>
+		echo '
 		<script type="text/javascript">
-		window.location.href = '<?php echo esc_url( add_query_arg( 'check_credentials', 1 ) ); ?>';
+		window.location.href = "' . esc_url( add_query_arg( 'check_credentials', 1 ) ) . '";
 		</script>
-		<?php
+		';
+	}
+
+	public function check_maybe_check_api() {
+		if ( ! $this->api()->key ) {
+			return;
+		}
+		error_log( __METHOD__ );
+		if ( isset( $_GET['re-auth'] ) && wp_verify_nonce( $_GET['re-auth'], 'reauth' ) ) {
+			delete_option( $this->api()->option_key );
+			delete_transient( 'apiconnect_desc_'. $this->api()->option_key );
+			wp_redirect( $this->settings_url( array( 'check_credentials' => 1 ) ) );
+			exit();
+		}
+
+		if ( isset( $_GET['check_credentials'] ) ) {
+			if ( $this->do_api_check() ) {
+				return;
+			}
+		}
+
+		if ( $this->check_for_errors() ) {
+			return;
+		}
+
+		$check_button = '
+		<a class="button-secondary" href="'. add_query_arg( 'check_credentials', 1 ) .'">' . __( 'Check API Connection', 'wds-rest-connect-ui' ) . '</a>
+		';
+
+		$this->cmb2_form_args['form_format'] = '<form class="cmb-form" method="post" id="%1$s" enctype="multipart/form-data" encoding="multipart/form-data"><input type="hidden" name="object_id" value="%2$s">%3$s<input type="submit" name="submit-cmb" value="%4$s" class="button-primary">&nbsp;&nbsp;'. $check_button .'</form>';
+		// $this->fields['consumer_secret']['after_row'] = $check_button;
+	}
+
+	public function do_api_check() {
+		$request = $this->api()->auth_get_request();
+		$this->fields();
+
+		if ( ! is_wp_error( $request ) ) {
+			$message =
+			'<div id="message" class="updated">
+				<h3 class="error">' . __( 'SUCCESS:', 'wds-rest-connect-ui' ) . '</h3>
+				<h4>'. __( 'Connected Site Name:', 'wds-rest-connect-ui' ) .'</h4>
+				<p>'. esc_html( $request->name ) .'</p>
+				<h4>'. __( 'Connected Site Description:', 'wds-rest-connect-ui' ) .'</h4>
+				<p>'. esc_html( $request->description ) .'</p>
+				<h4>'. __( 'Available Routes:', 'wds-rest-connect-ui' ) .'</h4>
+				<xmp>'. print_r( array_keys( get_object_vars( $request->routes ) ), true ) .'</xmp>
+				<p><a class="button-secondary" href="'. $this->settings_url() .'">' . __( 'Dismiss', 'wds-rest-connect-ui' ) . '</a>&nbsp;&nbsp;<a class="button-secondary" href="'. wp_nonce_url( $this->settings_url(), 'reauth', 're-auth' ) .'">' . __( 'Re-authenticate', 'wds-rest-connect-ui' ) . '</a></p>
+			</div>
+			';
+
+			$this->fields['url']['before_row'] = $message;
+			return true;
+		} elseif ( 'wp_rest_api_missing_token_data' == $request->get_error_code() ) {
+			$authenticate =
+			'<div id="message" class="updated">
+				<h3 class="error">' . __( "You're almost there.", 'wds-rest-connect-ui' ) . '</h3>
+				<p><a class="button-secondary" href="'. esc_url( $request->get_error_data() ) .'">' . __( 'Click here to authenticate', 'wds-rest-connect-ui' ) . '</a></p>
+			</div>
+			';
+			$this->fields['url']['before_row'] = $authenticate;
+		} else {
+			$error =
+			'<div id="message" class="error">
+				<h3 class="error">' . __( 'ERROR:', 'wds-rest-connect-ui' ) . '</h3>
+				<h4>'. $request->get_error_message() .'</h4>
+				<h4>'. $request->get_error_code() .'</h4>
+				<xmp>Error Data: '. print_r( $request->get_error_data(), true ) .'</xmp>
+				<p><a class="button-secondary" href="'. add_query_arg( 'wds_network_options_dismiss_errrors', 1 ) .'">' . __( 'Dismiss Errors', 'wds-rest-connect-ui' ) . '</a></p>
+			</div>
+			';
+			$this->fields['url']['before_row'] = $error;
+		}
+	}
+
+	public function check_for_errors() {
+		if ( isset( $_GET['wds_network_options_dismiss_errrors'] ) ) {
+			delete_option( 'wp_rest_api_connect_error' );
+			wp_redirect( $this->settings_url() );
+			exit();
+		}
+
+		$errors = get_option( 'wp_rest_api_connect_error' );
+		if ( $errors && $errors['message'] ) {
+			$error =
+			'<div id="message" class="error">
+				<h3 class="error">' . __( 'ERROR:', 'wds-rest-connect-ui' ) . '</h3>
+				<h4>'. $errors['message'] .'</h4>
+				<xmp>request args: '. print_r( $errors['request_args'], true ) .'</xmp>
+				<xmp>request response: '. print_r( $errors['request_response'], true ) .'</xmp>
+				<p><a class="button-secondary" href="'. add_query_arg( 'wds_network_options_dismiss_errrors', 1 ) .'">' . __( 'Dismiss Errors', 'wds-rest-connect-ui' ) . '</a></p>
+			</div>
+			';
+			$this->fields['url']['before_row'] = $error;
+			return true;
+		}
 	}
 
 	public function settings_url( $args = array() ) {
 		$args['page'] = $this->key;
 		return esc_url_raw( add_query_arg( $args, admin_url( 'admin.php' ) ) );
+	}
+
+	public function get( $key = '' ) {
+		return cmb2_get_option( $this->key, $key );
+	}
+
+	/**
+	 * Return (and initiate) API object.
+	 *
+	 * @return WDS_Network_Connect_API_Connect
+	 */
+	public function api() {
+		if ( ! empty( $this->api->key ) ) {
+			// Has already been initated
+			return $this->api;
+		}
+
+		$all = $this->get( 'all' );
+		$all = is_array( $all ) ? array_filter( $all ) : false;
+
+		if (
+			empty( $all )
+			|| ! $this->get( 'url' )
+			|| ! $this->get( 'consumer_key' )
+			|| ! $this->get( 'consumer_secret' )
+		) {
+			return $this->api;
+		}
+
+		$args['consumer_key']       = $this->get( 'consumer_key' );
+		$args['consumer_secret']    = $this->get( 'consumer_secret' );
+		$args['json_url'] = trailingslashit( $this->get( 'url' ) );
+		$args['json_url'] .= ltrim( trailingslashit( $this->get( 'endpoint', '/wp-json/' ) ), '/' );
+
+		if ( $this->get( 'header_key' ) && $this->get( 'header_token' ) ) {
+			$args['headers'] = array( $this->get( 'header_key' ) => $this->get( 'header_token' ) );
+		}
+
+		return $this->api->init( $args );
 	}
 }

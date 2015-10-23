@@ -76,6 +76,14 @@ class WDS_REST_Connect_UI {
 	const VERSION = '0.1.0';
 
 	/**
+	 * Plugin basename
+	 *
+	 * @var string
+	 * @since  0.1.0
+	 */
+	protected $basename = '';
+
+	/**
 	 * URL of plugin directory
 	 *
 	 * @var string
@@ -92,12 +100,13 @@ class WDS_REST_Connect_UI {
 	protected $path = '';
 
 	/**
-	 * Plugin basename
+	 * Whether plugin should operate on the network settings level.
+	 * Enabled via the WDSRESTCUI_NETWORK_SETTINGS constant
 	 *
-	 * @var string
+	 * @var bool
 	 * @since  0.1.0
 	 */
-	protected $basename = '';
+	protected $is_network = false;
 
 	/**
 	 * Singleton instance of plugin
@@ -141,9 +150,10 @@ class WDS_REST_Connect_UI {
 	 * @since  0.1.0
 	 */
 	protected function __construct() {
-		$this->basename = plugin_basename( __FILE__ );
-		$this->url      = plugin_dir_url( __FILE__ );
-		$this->path     = plugin_dir_path( __FILE__ );
+		$this->basename   = plugin_basename( __FILE__ );
+		$this->url        = plugin_dir_url( __FILE__ );
+		$this->path       = plugin_dir_path( __FILE__ );
+		$this->is_network = defined( 'WDSRESTCUI_NETWORK_SETTINGS' );
 
 		$this->plugin_classes();
 	}
@@ -155,8 +165,8 @@ class WDS_REST_Connect_UI {
 	 * @return void
 	 */
 	public function plugin_classes() {
-		$this->api = new WDSRESTCUI_Compatibility( $this );
-		$class = defined( 'WDSRESTCUI_NETWORK_SETTINGS' ) ? 'WDSRESTCUI_Network_Settings' : 'WDSRESTCUI_Settings';
+		$this->api = new WDSRESTCUI_Compatibility( $this->is_network );
+		$class = $this->is_network ? 'WDSRESTCUI_Network_Settings' : 'WDSRESTCUI_Settings';
 		$this->settings = new $class( $this, $this->api );
 	} // END OF PLUGIN CLASSES FUNCTION
 
@@ -168,6 +178,7 @@ class WDS_REST_Connect_UI {
 	 */
 	public function hooks() {
 		add_action( 'init', array( $this, 'init' ) );
+		$this->settings->hooks();
 	}
 
 	/**
