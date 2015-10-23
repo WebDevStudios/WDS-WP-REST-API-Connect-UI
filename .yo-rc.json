@@ -1,0 +1,17 @@
+{
+  "generator-plugin-wp": {
+    "name": "WDS WP REST API Connect UI",
+    "homepage": "http://webdevstudios.com",
+    "description": "Provides UI for connecting from one WordPress installation to another via the WP REST API over <a href=\"https://github.com/WP-API/OAuth1\">OAuth1</a>",
+    "version": "0.1.0",
+    "author": "WebDevStudios",
+    "authoremail": "contact@webdevstudios.com",
+    "authorurl": "http://webdevstudios.com",
+    "license": "GPLv2",
+    "slug": "wds-rest-connect-ui",
+    "classname": "WDS_REST_Connect_UI",
+    "classprefix": "WDSRESTCUI_",
+    "prefix": "wds_rest_connect_ui",
+    "year": 2015
+  }
+}

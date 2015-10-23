@@ -1,0 +1,18 @@
+{
+  "name": "wds-rest-connect-ui",
+  "description": "Provides UI for connecting from one WordPress installation to another via the WP REST API over <a href=\"https://github.com/WP-API/OAuth1\">OAuth1</a>",
+  "license": "GPLv2",
+  "authors": [
+    "WebDevStudios"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}
