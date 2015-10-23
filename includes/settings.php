@@ -45,6 +45,13 @@ class WDSWPRESTAPICUI_Settings {
 	protected $options_page = '';
 
 	/**
+	 * Additional args for cmb2_metabox_form
+	 *
+	 * @var array
+	 */
+	protected $cmb2_form_args = array();
+
+	/**
 	 * Constructor
 	 *
 	 * @since  0.1.0
