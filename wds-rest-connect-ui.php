@@ -108,9 +108,9 @@ class WDS_REST_Connect_UI {
 	protected static $single_instance = null;
 
 	/**
-	 * Instance of WDSWPRESTAPICUI_Settings
+	 * Instance of WDSRESTCUI_Settings
 	 *
-	 * @var WDSWPRESTAPICUI_Settings
+	 * @var WDSRESTCUI_Settings
 	 */
 	protected $settings;
 
@@ -148,8 +148,8 @@ class WDS_REST_Connect_UI {
 	 * @return void
 	 */
 	public function plugin_classes() {
-		// Attach other plugin classes to the base plugin class.
-		$this->settings = new WDSWPRESTAPICUI_Settings( $this );
+		$class = defined( 'WDSRESTCUI_NETWORK_SETTINGS' ) ? 'WDSRESTCUI_Network_Settings' : 'WDSRESTCUI_Settings';
+		$this->settings = new $class( $this );
 	} // END OF PLUGIN CLASSES FUNCTION
 
 	/**
