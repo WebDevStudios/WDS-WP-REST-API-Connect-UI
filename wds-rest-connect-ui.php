@@ -115,6 +115,13 @@ class WDS_REST_Connect_UI {
 	protected $settings;
 
 	/**
+	 * Instance of WDSRESTCUI_Compatibility, an abstraction layer for WDS_WP_REST_API_Connect
+	 *
+	 * @var WDSRESTCUI_Compatibility
+	 */
+	protected $api;
+
+	/**
 	 * Creates or returns an instance of this class.
 	 *
 	 * @since  0.1.0
@@ -148,8 +155,9 @@ class WDS_REST_Connect_UI {
 	 * @return void
 	 */
 	public function plugin_classes() {
+		$this->api = new WDSRESTCUI_Compatibility( $this );
 		$class = defined( 'WDSRESTCUI_NETWORK_SETTINGS' ) ? 'WDSRESTCUI_Network_Settings' : 'WDSRESTCUI_Settings';
-		$this->settings = new $class( $this );
+		$this->settings = new $class( $this, $this->api );
 	} // END OF PLUGIN CLASSES FUNCTION
 
 	/**
@@ -236,6 +244,7 @@ class WDS_REST_Connect_UI {
 			case 'url':
 			case 'path':
 			case 'settings':
+			case 'api':
 				return $this->$field;
 			default:
 				throw new Exception( 'Invalid '. __CLASS__ .' property: ' . $field );
