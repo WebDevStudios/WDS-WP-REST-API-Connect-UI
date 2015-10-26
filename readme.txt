@@ -12,6 +12,14 @@ License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 == Description ==
 
 Provides UI for connecting from one WordPress installation to another via the [WordPress REST AP](http://wp-api.org/) over <a href="https://github.com/WP-API/OAuth1">OAuth1</a>. This plugin is a UI wrapper for [WDS WP REST API Connect](https://github.com/WebDevStudios/WDS-WP-REST-API-Connect).
+
+The OAuth1 plugin still requires consumer credentials to be generated via WP-CLI. [See instructions here](How to get consumer credentials via WPCLI).
+
+Caveats:
+
+* [CMB2](https://github.com/WebDevStudios/CMB2) is required.
+* The OAuth1 plugin still requires consumer credentials to be generated via WP-CLI. [See instructions here](How to get consumer credentials via WPCLI).
+
 == Installation ==
 
 = Manual Installation =
