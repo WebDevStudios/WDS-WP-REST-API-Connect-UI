@@ -153,7 +153,7 @@ class WDS_REST_Connect_UI {
 		$this->basename   = plugin_basename( __FILE__ );
 		$this->url        = plugin_dir_url( __FILE__ );
 		$this->path       = plugin_dir_path( __FILE__ );
-		$this->is_network = defined( 'WDSRESTCUI_NETWORK_SETTINGS' );
+		$this->is_network = apply_filters( 'wds_rest_connect_ui_is_network', defined( 'WDSRESTCUI_NETWORK_SETTINGS' ) );
 
 		$this->plugin_classes();
 	}
