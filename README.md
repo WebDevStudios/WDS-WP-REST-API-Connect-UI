@@ -12,11 +12,36 @@
 
 Provides UI for connecting from one WordPress installation to another via the [WordPress REST AP](http://wp-api.org/) over <a href="https://github.com/WP-API/OAuth1">OAuth1</a>. This plugin is a UI wrapper for [WDS WP REST API Connect](https://github.com/WebDevStudios/WDS-WP-REST-API-Connect).
 
-**Caveats:**
+#### Caveats:
 
 * [CMB2](https://github.com/WebDevStudios/CMB2) is required. 
 * The OAuth1 plugin still requires consumer credentials to be generated via WP-CLI. [See instructions here](How to get consumer credentials via WPCLI).
 * Be sure to recursively clone this repo (git clone --recursive https://github.com/WebDevStudios/WDS-Twitter-Widget.git) in order to dowload the required submodule.
+
+#### Usage:
+
+Once you have a successful API connection, the plugin provides an API helper function/filter. The helper function and filter both return a WDS_WP_REST_API_Connect object ([example usage here](https://github.com/WebDevStudios/WDS-WP-REST-API-Connect/blob/master/example.php)) if successful, which you can use to make your API requests:
+
+The filter is an alternative to the helper function provided so that you can use in other plugins or themes without having to check if `function_exists`. To do that, simply use `$api = apply_filters( 'wds_rest_connect_ui_api_object', false );`. If the `wds_rest_connect_ui_api_object` function isn't available, you're original value, `false` will be returned. Whether using the function or the filter, you'll want to check if the `$api` object returned is a `WP_Error` object (`is_wp_error`) or a `WDS_WP_REST_API_Connect` object (`is_a( $api, 'WDS_WP_REST_API_Connect' )`) before proceeding with making requests.
+
+```php
+// Get API object
+$api = apply_filters( 'wds_rest_connect_ui_api_object', false );
+
+// If WP_Error, find out what happened.
+if ( is_wp_error( $api ) ) {
+	echo '<xmp>'. print_r( $api->get_error_message(), true ) .'</xmp>';
+}
+
+// If a WDS_WP_REST_API_Connect object is returned, you're good to go.
+if ( is_a( $api, 'WDS_WP_REST_API_Connect' ) ) {
+
+	$schema = $api->auth_get_request();
+
+	// Let's take a look at the API schema
+	echo '<xmp>$schema: '. print_r( $schema, true ) .'</xmp>';
+}
+```
 
 ## Installation ##
 
