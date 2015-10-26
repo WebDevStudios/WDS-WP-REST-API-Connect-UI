@@ -317,3 +317,72 @@ function wds_rest_connect_ui() {
 
 // Kick it off
 add_action( 'plugins_loaded', array( wds_rest_connect_ui(), 'hooks' ) );
+
+/**
+ * Wrapper function for the setting get method
+ *
+ * Available options;
+ *    'url'
+ *    'endpoint'
+ *    'api_url'
+ *    'consumer_key'
+ *    'consumer_secret'
+ *    'header_key'
+ *    'header_token'
+ *
+ * @since  0.1.0
+ *
+ * @param  string  $field_id The setting field to retrieve.
+ * @param  boolean $default  Optional default value if no value exists.
+ *
+ * @return mixed             Value for setting.
+ */
+function wds_rest_connect_ui_get_setting( $field_id = '', $default = false ) {
+	return wds_rest_connect_ui()->settings->get( $field_id, $default );
+}
+
+/**
+ *
+ * In your theme or plugin, Instead of using:
+ * `function_exists( 'wds_rest_connect_ui_get_setting' )`
+ * you can use:
+ * `$value = apply_filters( 'wds_rest_connect_ui_get_setting', 'api_url' );`
+ *
+ */
+add_filter( 'wds_rest_connect_ui_get_setting', 'wds_rest_connect_ui_get_setting', 10, 2 );
+
+/**
+ * Wrapper function for the setting api method
+ *
+ * @since  0.1.0
+ *
+ * @param  string  $field_id The setting field to retrieve.
+ * @param  boolean $default  Optional default value if no value exists.
+ *
+ * @return mixed             Value for setting.
+ */
+function wds_rest_connect_ui_api_object() {
+	$settings = wds_rest_connect_ui()->settings;
+	$api = $settings->api();
+
+	if ( '' === $api->key ) {
+		$error = sprintf( __( 'API connection is not properly authenticated. Authenticate via the <a href="%s">settings page</a>.', 'wds-rest-connect-ui' ), $settings->settings_url() );
+
+		return new WP_Error( 'wds_rest_connect_ui_api_fail', $error );
+	}
+
+	return $api;
+}
+
+/**
+ *
+ * In your theme or plugin, Instead of using:
+ * `function_exists( 'wds_rest_connect_ui_api_object' )`
+ * you can use:
+ * `$api = apply_filters( 'wds_rest_connect_ui_api_object', 1 );`
+ * Then check for empty or WP_Error value before proceeding:
+ * `if ( $api && ! is_wp_error( $api ) ) { $schema = $api->auth_get_request(); }`
+ *
+ */
+add_filter( 'wds_rest_connect_ui_api_object', 'wds_rest_connect_ui_api_object' );
+
