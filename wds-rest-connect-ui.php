@@ -100,6 +100,14 @@ class WDS_REST_Connect_UI {
 	protected $path = '';
 
 	/**
+	 * Error message if plugin cannot be activated.
+	 *
+	 * @var string
+	 * @since  0.1.0
+	 */
+	protected $activation_error = '';
+
+	/**
 	 * Whether plugin should operate on the network settings level.
 	 * Enabled via the WDSRESTCUI_NETWORK_SETTINGS constant
 	 *
@@ -199,9 +207,23 @@ class WDS_REST_Connect_UI {
 	 * @since  0.1.0
 	 * @return boolean
 	 */
-	public static function meets_requirements() {
+	public function meets_requirements() {
+
 		// Plugin requires CMB2
-		return defined( 'CMB2_LOADED' );
+		if ( ! defined( 'CMB2_LOADED' ) ) {
+			$this->activation_error = sprintf( __( 'WDS WP REST API Connect UI requires the <a href="https://wordpress.org/plugins/cmb2/">CMB2 plugin</a>, so it has been <a href="%s">deactivated</a>.', 'wds-network-require-login' ), admin_url( 'plugins.php' ) );
+
+			return false;
+		}
+
+		// If network-level, but not network-activated, it fails
+		if ( $this->is_network && ! is_plugin_active_for_network( $this->basename ) ) {
+			$this->activation_error = sprintf( __( "WDS WP REST API Connect UI has been designated as a network-only plugin (via the <code>'wds_rest_connect_ui_is_network'</code> filter or the <code>'WDSRESTCUI_NETWORK_SETTINGS'</code> constant), so it has been <a href=\"%s\">deactivated</a>. Please try network-activating.", 'wds-network-require-login' ), admin_url( 'plugins.php' ) );
+
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
@@ -235,7 +257,7 @@ class WDS_REST_Connect_UI {
 	public function requirements_not_met_notice() {
 		// Output our error
 		echo '<div id="message" class="error">';
-		echo '<p>' . sprintf( __( 'WDS WP REST API Connect UI requires the <a href="https://wordpress.org/plugins/cmb2/">CMB2 plugin</a>, so it has been <a href="%s">deactivated</a>.', 'wds-network-require-login' ), admin_url( 'plugins.php' ) ) . '</p>';
+		echo '<p>' . $this->activation_error . '</p>';
 		echo '</div>';
 	}
 
