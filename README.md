@@ -28,10 +28,10 @@ Provides UI for connecting from one WordPress installation to another via the [W
 ![Settings](https://raw.githubusercontent.com/WebDevStudios/WDS-WP-REST-API-Connect-UI/master/screenshot-1.png)
 
 2. After settings are saved, authentication is required.
-![After settings are saved, authentication is required.](https://raw.githubusercontent.com/WebDevStudios/WDS-WP-REST-API-Connect-UI/master/screenshot-1.png)
+![After settings are saved, authentication is required.](https://raw.githubusercontent.com/WebDevStudios/WDS-WP-REST-API-Connect-UI/master/screenshot-2.png)
 
 3. Successful authentication notice which demonstrates available routes.
-![Successful authentication notice which demonstrates available routes.](https://raw.githubusercontent.com/WebDevStudios/WDS-WP-REST-API-Connect-UI/master/screenshot-1.png)
+![Successful authentication notice which demonstrates available routes.](https://raw.githubusercontent.com/WebDevStudios/WDS-WP-REST-API-Connect-UI/master/screenshot-3.png)
 
 ## Changelog ##
 
