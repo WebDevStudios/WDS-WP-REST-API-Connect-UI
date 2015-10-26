@@ -23,7 +23,7 @@ The OAuth1 plugin still requires consumer credentials to be generated via WP-CLI
 
 #### Usage:
 
-Once you have a successful API connection, the plugin provides an API helper function/filter. The helper function and filter both return a WDS_WP_REST_API_Connect object ([example usage here](https://github.com/WebDevStudios/WDS-WP-REST-API-Connect/blob/master/example.php)) if successful, which you can use to make your API requests:
+Once you've created a successful API connection via the Settings screen, you can use the the plugin's API helper function/filter. If the connection is successful, The helper function and filter both return a WDS_WP_REST_API_Connect object ([example usage here](https://github.com/WebDevStudios/WDS-WP-REST-API-Connect/blob/master/example.php)), which you can use to make your API requests.
 
 The filter is an alternative to the helper function provided so that you can use in other plugins or themes without having to check if `function_exists`. To do that, simply use `$api = apply_filters( 'wds_rest_connect_ui_api_object', false );`. If the `wds_rest_connect_ui_api_object` function isn't available, you're original value, `false` will be returned. Whether using the function or the filter, you'll want to check if the `$api` object returned is a `WP_Error` object (`is_wp_error`) or a `WDS_WP_REST_API_Connect` object (`is_a( $api, 'WDS_WP_REST_API_Connect' )`) before proceeding with making requests.
 
