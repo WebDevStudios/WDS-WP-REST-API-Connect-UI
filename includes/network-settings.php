@@ -30,10 +30,19 @@ class WDSRESTCUI_Network_Settings extends WDSRESTCUI_Settings {
 	public function hooks() {
 		parent::hooks();
 
+		add_filter( 'pre_option_'. $this->key, array( $this, 'get_option_override' ), 10, 2 );
 		// Override CMB's getter
 		add_filter( 'cmb2_override_option_get_'. $this->key, array( $this, 'get_override' ), 10, 2 );
 		// Override CMB's setter
 		add_filter( 'cmb2_override_option_save_'. $this->key, array( $this, 'update_override' ), 10, 2 );
+	}
+
+	/**
+	 * Replaces get_option with get_site_option
+	 * @since  0.1.0
+	 */
+	public function get_option_override( $test, $key ) {
+		return get_site_option( $key );
 	}
 
 	/**

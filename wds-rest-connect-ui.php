@@ -167,7 +167,7 @@ class WDS_REST_Connect_UI {
 	public function plugin_classes() {
 		$this->api = new WDSRESTCUI_Compatibility( $this->is_network );
 		$class = $this->is_network ? 'WDSRESTCUI_Network_Settings' : 'WDSRESTCUI_Settings';
-		$this->settings = new $class( $this, $this->api );
+		$this->settings = new $class( $this->basename, $this->api );
 	} // END OF PLUGIN CLASSES FUNCTION
 
 	/**
