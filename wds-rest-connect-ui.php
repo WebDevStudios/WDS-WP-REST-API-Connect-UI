@@ -385,4 +385,3 @@ function wds_rest_connect_ui_api_object() {
  *
  */
 add_filter( 'wds_rest_connect_ui_api_object', 'wds_rest_connect_ui_api_object' );
-

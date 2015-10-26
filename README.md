@@ -10,7 +10,7 @@
 
 ## Description ##
 
-Provides UI for connecting from one WordPress installation to another via the WP REST API over <a href="https://github.com/WP-API/OAuth1">OAuth1</a>
+Provides UI for connecting from one WordPress installation to another via the [WordPress REST AP](http://wp-api.org/) over <a href="https://github.com/WP-API/OAuth1">OAuth1</a>. This plugin is a UI wrapper for [WDS WP REST API Connect](https://github.com/WebDevStudios/WDS-WP-REST-API-Connect).
 
 ## Installation ##
 
@@ -24,6 +24,14 @@ Provides UI for connecting from one WordPress installation to another via the WP
 
 ## Screenshots ##
 
+1. Settings
+![Settings](https://github.com/WebDevStudios/WDS-WP-REST-API-Connect-UI/raw/master/screenshot-1.jpg)
+
+2. After settings are saved, authentication is required.
+![After settings are saved, authentication is required.](https://github.com/WebDevStudios/WDS-WP-REST-API-Connect-UI/raw/master/screenshot-1.jpg)
+
+3. Successful authentication notice which demonstrates available routes.
+![Successful authentication notice which demonstrates available routes.](https://github.com/WebDevStudios/WDS-WP-REST-API-Connect-UI/raw/master/screenshot-1.jpg)
 
 ## Changelog ##
 

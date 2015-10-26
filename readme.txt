@@ -11,8 +11,7 @@ License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-Provides UI for connecting from one WordPress installation to another via the WP REST API over <a href="https://github.com/WP-API/OAuth1">OAuth1</a>
-
+Provides UI for connecting from one WordPress installation to another via the [WordPress REST AP](http://wp-api.org/) over <a href="https://github.com/WP-API/OAuth1">OAuth1</a>. This plugin is a UI wrapper for [WDS WP REST API Connect](https://github.com/WebDevStudios/WDS-WP-REST-API-Connect).
 == Installation ==
 
 = Manual Installation =
@@ -25,6 +24,9 @@ Provides UI for connecting from one WordPress installation to another via the WP
 
 == Screenshots ==
 
+1. Settings
+2. After settings are saved, authentication is required.
+3. Successful authentication notice which demonstrates available routes.
 
 == Changelog ==
 
