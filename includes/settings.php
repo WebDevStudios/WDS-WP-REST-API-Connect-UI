@@ -531,14 +531,34 @@ class WDSRESTCUI_Settings {
 	 * Get a setting from the stored settings values.
 	 *
 	 * @since  0.1.0
+	 * @see    get_option()
 	 * @see    cmb2_get_option()
 	 *
-	 * @param  string  $key Specifies the setting to retrieve.
+	 * @param  string  $field_id Specifies the setting to retrieve.
 	 *
-	 * @return mixed        Setting value.
+	 * @return mixed             Setting value.
 	 */
-	public function get( $key = '' ) {
-		return cmb2_get_option( $this->key, $key );
+	public function get( $field_id = '', $default = false ) {
+		if ( function_exists( 'cmb2_get_option' ) ) {
+			$value = cmb2_get_option( $this->key, $field_id, $default );
+		} else {
+
+			$opts = get_option( $this->key );
+			$value = $default;
+
+			if ( 'all' == $field_id ) {
+				$value = $opts;
+			} elseif ( array_key_exists( $field_id, $opts ) ) {
+				$value = false !== $opts[ $field_id ] ? $opts[ $field_id ] : $default;
+			}
+		}
+
+		if ( ! $value && 'api_url' == $field_id ) {
+			$value = trailingslashit( $this->get( 'url' ) );
+			$value .= ltrim( trailingslashit( $this->get( 'endpoint', '/wp-json/' ) ), '/' );
+		}
+
+		return $value;
 	}
 
 	/**
@@ -565,10 +585,9 @@ class WDSRESTCUI_Settings {
 			return $this->api;
 		}
 
-		$args['consumer_key']       = $this->get( 'consumer_key' );
-		$args['consumer_secret']    = $this->get( 'consumer_secret' );
-		$args['json_url'] = trailingslashit( $this->get( 'url' ) );
-		$args['json_url'] .= ltrim( trailingslashit( $this->get( 'endpoint', '/wp-json/' ) ), '/' );
+		$args['consumer_key']    = $this->get( 'consumer_key' );
+		$args['consumer_secret'] = $this->get( 'consumer_secret' );
+		$args['json_url']        = $this->get( 'api_url' );
 
 		if ( $this->get( 'header_key' ) && $this->get( 'header_token' ) ) {
 			$args['headers'] = array( $this->get( 'header_key' ) => $this->get( 'header_token' ) );
