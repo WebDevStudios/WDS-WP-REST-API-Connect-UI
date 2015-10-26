@@ -15,7 +15,7 @@ Provides UI for connecting from one WordPress installation to another via the [W
 
 The OAuth1 plugin still requires consumer credentials to be generated via WP-CLI. [See instructions here](How to get consumer credentials via WPCLI).
 
-Caveats:
+**Caveats:**
 
 * [CMB2](https://github.com/WebDevStudios/CMB2) is required.
 * The OAuth1 plugin still requires consumer credentials to be generated via WP-CLI. [See instructions here](How to get consumer credentials via WPCLI).
