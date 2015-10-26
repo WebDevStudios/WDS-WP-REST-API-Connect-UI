@@ -319,7 +319,7 @@ function wds_rest_connect_ui() {
 add_action( 'plugins_loaded', array( wds_rest_connect_ui(), 'hooks' ) );
 
 /**
- * Wrapper function for the setting get method
+ * Wrapper function for WDSRESTCUI_Settings::get()
  *
  * Available options;
  *    'url'
@@ -342,24 +342,11 @@ function wds_rest_connect_ui_get_setting( $field_id = '', $default = false ) {
 }
 
 /**
- *
- * In your theme or plugin, Instead of using:
- * `function_exists( 'wds_rest_connect_ui_get_setting' )`
- * you can use:
- * `$value = apply_filters( 'wds_rest_connect_ui_get_setting', 'api_url' );`
- *
- */
-add_filter( 'wds_rest_connect_ui_get_setting', 'wds_rest_connect_ui_get_setting', 10, 2 );
-
-/**
- * Wrapper function for the setting api method
+ * Wrapper function for WDSRESTCUI_Settings::api()
  *
  * @since  0.1.0
  *
- * @param  string  $field_id The setting field to retrieve.
- * @param  boolean $default  Optional default value if no value exists.
- *
- * @return mixed             Value for setting.
+ * @return WP_Error|WDS_WP_REST_API_Connect The API object or WP_Error.
  */
 function wds_rest_connect_ui_api_object() {
 	$settings = wds_rest_connect_ui()->settings;
@@ -376,12 +363,13 @@ function wds_rest_connect_ui_api_object() {
 
 /**
  *
- * In your theme or plugin, Instead of using:
- * `function_exists( 'wds_rest_connect_ui_api_object' )`
- * you can use:
- * `$api = apply_filters( 'wds_rest_connect_ui_api_object', 1 );`
- * Then check for empty or WP_Error value before proceeding:
- * `if ( $api && ! is_wp_error( $api ) ) { $schema = $api->auth_get_request(); }`
+ * In your theme or plugin, Instead of checking if the
+ * 'wds_rest_connect_ui_api_object' function exists you can use:
+ *
+ * `$api = apply_filters( 'wds_rest_connect_ui_api_object', null );`
+ *
+ * Then check for WDS_WP_REST_API_Connect or WP_Error value before proceeding:
+ * `if ( is_a( $api, 'WDS_WP_REST_API_Connect' ) ) { $schema = $api->auth_get_request(); }`
  *
  */
 add_filter( 'wds_rest_connect_ui_api_object', 'wds_rest_connect_ui_api_object' );
