@@ -185,7 +185,7 @@ class WDS_REST_Connect_UI {
 	 * @return void
 	 */
 	public function hooks() {
-		add_action( 'init', array( $this, 'init' ) );
+		add_action( 'plugins_loaded', array( $this, 'init' ) );
 		$this->settings->hooks();
 	}
 
