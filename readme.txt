@@ -19,7 +19,7 @@ The OAuth1 plugin still requires consumer credentials to be generated via WP-CLI
 
 * [CMB2](https://github.com/WebDevStudios/CMB2) is required.
 * The OAuth1 plugin still requires consumer credentials to be generated via WP-CLI. [See instructions here](How to get consumer credentials via WPCLI).
-* Be sure to recursively clone this repo (git clone --recursive https://github.com/WebDevStudios/WDS-Twitter-Widget.git) in order to dowload the required submodule.
+* Be sure to recursively clone this repo (git clone --recursive https://github.com/WebDevStudios/WDS-WP-REST-API-Connect-UI) in order to dowload the required submodule.
 
 #### Usage:
 
