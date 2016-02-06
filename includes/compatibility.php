@@ -5,8 +5,6 @@
  * @package WDS WP REST API Connect UI
  */
 
-WDS_REST_Connect_UI::include_file( 'vendor/wds-wp-rest-api-connect/wds-wp-rest-api-connect' );
-
 class WDSRESTCUI_Compatibility extends WDS_WP_REST_API_Connect {
 
 	/**

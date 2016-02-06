@@ -55,6 +55,8 @@ function wds_rest_connect_ui_autoload_classes( $class_name ) {
 }
 spl_autoload_register( 'wds_rest_connect_ui_autoload_classes' );
 
+// include composer files
+require_once WDS_REST_Connect_UI::dir( 'vendor/autoload.php' );
 
 /**
  * Main initiation class

@@ -18,6 +18,9 @@
     },
     "require": {
         "php": ">5.3",
-        "webdevstudios/wds-wp-json-api-connect": "v0.1.4"
+        "webdevstudios/wds-wp-json-api-connect": "dev-master"
+    },
+    "autoload": {
+        "classmap": ["vendor/webdevstudios/wds-wp-json-api-connect"]
     }
 }

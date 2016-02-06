@@ -1,0 +1,62 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "84b2701ffd18992700bd74a64bc72593",
+    "content-hash": "92815b118513bbafe7ce6f2279b9a4f3",
+    "packages": [
+        {
+            "name": "webdevstudios/wds-wp-json-api-connect",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WebDevStudios/WDS-WP-REST-API-Connect.git",
+                "reference": "6bf3330cac688aa6e049fb299dc13785c2be657f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WebDevStudios/WDS-WP-REST-API-Connect/zipball/6bf3330cac688aa6e049fb299dc13785c2be657f",
+                "reference": "6bf3330cac688aa6e049fb299dc13785c2be657f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">5.3"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "WebDevStudios",
+                    "email": "contact@webdevstudios.com",
+                    "homepage": "https://github.com/WebDevStudios",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Helper class for connecting from one WordPress installation to another via the WordPress REST API and OAuth.",
+            "homepage": "https://github.com/WebDevStudios/WDS-WP-REST-API-Connect",
+            "keywords": [
+                "json",
+                "wordpress",
+                "wp-api"
+            ],
+            "time": "2016-02-06 19:33:55"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "webdevstudios/wds-wp-json-api-connect": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">5.3"
+    },
+    "platform-dev": []
+}
