@@ -1,3 +1,0 @@
-[submodule "includes/vendor/wds-wp-json-api-connect"]
-	path = includes/vendor/wds-wp-rest-api-connect
-	url = https://github.com/WebDevStudios/WDS-WP-REST-API-Connect

@@ -1,0 +1,23 @@
+{
+    "name": "webdevstudios/wds-wp-rest-api-connect-ui",
+    "description": "Provides UI for connecting from one WordPress installation to another via the WordPress REST AP over OAuth1. This plugin is a UI wrapper for WDS WP REST API Connect.",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "WebDevStudios",
+            "email": "contact@webdevstudios.com",
+            "homepage": "https://github.com/WebDevStudios",
+            "role": "Developer"
+        }
+    ],
+    "keywords": ["wordpress", "wp-api", "json" ],
+    "homepage": "https://github.com/WebDevStudios/WDS-WP-REST-API-Connect-UI",
+    "support": {
+        "issues": "https://github.com/WebDevStudios/WDS-WP-REST-API-Connect-UI/issues",
+        "source": "https://github.com/WebDevStudios/WDS-WP-REST-API-Connect-UI"
+    },
+    "require": {
+        "php": ">5.3",
+        "webdevstudios/wds-wp-json-api-connect": "v0.1.4"
+    }
+}
