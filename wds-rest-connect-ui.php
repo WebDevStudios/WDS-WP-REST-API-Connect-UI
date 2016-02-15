@@ -3,7 +3,7 @@
  * Plugin Name: WDS WP REST API Connect UI
  * Plugin URI:  http://webdevstudios.com
  * Description: Provides UI for connecting from one WordPress installation to another via the WP REST API over <a href="https://github.com/WP-API/OAuth1">OAuth1</a>
- * Version:     0.2.0
+ * Version:     0.2.1
  * Author:      WebDevStudios
  * Author URI:  http://webdevstudios.com
  * Donate link: http://webdevstudios.com

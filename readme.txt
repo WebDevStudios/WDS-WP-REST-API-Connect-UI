@@ -4,7 +4,7 @@ Donate link:       http://webdevstudios.com
 Tags:
 Requires at least: 4.4.2
 Tested up to:      4.4.2
-Stable tag:        0.2.0
+Stable tag:        0.2.1
 License:           GPLv2
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -68,6 +68,9 @@ if ( is_a( $api, 'WDS_WP_REST_API\OAuth1\Connect' ) ) {
 * First release
 
 == Upgrade Notice ==
+
+= 0.2.1 =
+* Update composer files to point to correct packagist repo for WDS WP REST API Connect.
 
 = 0.2.0 =
 * Update to fix some security issues and work with the new version of the OAuth plugin.

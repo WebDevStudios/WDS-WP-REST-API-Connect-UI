@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4f20c7fcf5ab00dd799c74881385f050",
-    "content-hash": "1a6fd8607fbdf9bef7aa9800305a9340",
+    "hash": "ab86a4f3302ca2fe48a332939af730be",
+    "content-hash": "8d8c4e7a38ac44c77bd1a5db6462f391",
     "packages": [
         {
             "name": "guzzle/guzzle",
@@ -320,17 +320,17 @@
             "time": "2016-01-31 22:00:11"
         },
         {
-            "name": "webdevstudios/wds-wp-json-api-connect",
-            "version": "v0.2.0",
+            "name": "webdevstudios/wds-wp-rest-api-connect",
+            "version": "v0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WebDevStudios/WDS-WP-REST-API-Connect.git",
-                "reference": "f0ab9527b579c20bc355351586825d594e5014a5"
+                "reference": "1f142fe4e4644dac6358a2e016ccad719c367abd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WebDevStudios/WDS-WP-REST-API-Connect/zipball/f0ab9527b579c20bc355351586825d594e5014a5",
-                "reference": "f0ab9527b579c20bc355351586825d594e5014a5",
+                "url": "https://api.github.com/repos/WebDevStudios/WDS-WP-REST-API-Connect/zipball/1f142fe4e4644dac6358a2e016ccad719c367abd",
+                "reference": "1f142fe4e4644dac6358a2e016ccad719c367abd",
                 "shasum": ""
             },
             "require": {
@@ -366,7 +366,7 @@
                 "wordpress",
                 "wp-api"
             ],
-            "time": "2016-02-15 18:55:08"
+            "time": "2016-02-15 19:57:01"
         },
         {
             "name": "wp-api/discovery",
