@@ -3,7 +3,7 @@
  * Plugin Name: WDS WP REST API Connect UI
  * Plugin URI:  http://webdevstudios.com
  * Description: Provides UI for connecting from one WordPress installation to another via the WP REST API over <a href="https://github.com/WP-API/OAuth1">OAuth1</a>
- * Version:     0.1.0
+ * Version:     0.2.0
  * Author:      WebDevStudios
  * Author URI:  http://webdevstudios.com
  * Donate link: http://webdevstudios.com
@@ -34,28 +34,7 @@
  * Built using generator-plugin-wp
  */
 
-/**
- * Autoloads files with classes when needed
- *
- * @since  0.1.0
- * @param  string $class_name Name of the class being requested
- * @return void
- */
-function wds_rest_connect_ui_autoload_classes( $class_name ) {
-	if ( 0 !== strpos( $class_name, 'WDSRESTCUI_' ) ) {
-		return;
-	}
-
-	$filename = strtolower( str_replace(
-		'_', '-',
-		substr( $class_name, strlen( 'WDSRESTCUI_' ) )
-	) );
-
-	WDS_REST_Connect_UI::include_file( $filename );
-}
-spl_autoload_register( 'wds_rest_connect_ui_autoload_classes' );
-
-// include composer files
+// include composer autoloader (make sure you run `composer install`!)
 require_once WDS_REST_Connect_UI::dir( 'vendor/autoload.php' );
 
 /**
@@ -75,7 +54,7 @@ class WDS_REST_Connect_UI {
 	 * @var  string
 	 * @since  0.1.0
 	 */
-	const VERSION = '0.1.0';
+	const VERSION = '0.2.0';
 
 	/**
 	 * Plugin basename
@@ -134,7 +113,7 @@ class WDS_REST_Connect_UI {
 	protected $settings;
 
 	/**
-	 * Instance of WDSRESTCUI_Compatibility, an abstraction layer for WDS_WP_REST_API_Connect
+	 * Instance of WDSRESTCUI_Compatibility, an abstraction layer for Connect
 	 *
 	 * @var WDSRESTCUI_Compatibility
 	 */
@@ -175,7 +154,13 @@ class WDS_REST_Connect_UI {
 	 * @return void
 	 */
 	public function plugin_classes() {
-		$this->api = new WDSRESTCUI_Compatibility( $this->is_network );
+		$storage_classes = $this->is_network ? array(
+			'options_class' => 'WDSRESTCUI_Storage_Options',
+			'transients_class' => 'WDSRESTCUI_Storage_Transients',
+		) : array();
+
+		$this->api = new WDS_WP_REST_API\OAuth1\Connect( $storage_classes );
+
 		$class = $this->is_network ? 'WDSRESTCUI_Network_Settings' : 'WDSRESTCUI_Settings';
 		$this->settings = new $class( $this->basename, $this->api );
 	} // END OF PLUGIN CLASSES FUNCTION
@@ -241,9 +226,6 @@ class WDS_REST_Connect_UI {
 			// Add a dashboard notice
 			add_action( 'all_admin_notices', array( $this, 'requirements_not_met_notice' ) );
 
-			// Deactivate our plugin
-			deactivate_plugins( $this->basename );
-
 			return false;
 		}
 
@@ -261,6 +243,9 @@ class WDS_REST_Connect_UI {
 		echo '<div id="message" class="error">';
 		echo '<p>' . $this->activation_error . '</p>';
 		echo '</div>';
+
+		// Deactivate our plugin
+		deactivate_plugins( $this->basename );
 	}
 
 	/**
@@ -349,8 +334,8 @@ add_action( 'plugins_loaded', array( wds_rest_connect_ui(), 'hooks' ) );
  *    'url'
  *    'endpoint'
  *    'api_url'
- *    'consumer_key'
- *    'consumer_secret'
+ *    'client_key'
+ *    'client_secret'
  *    'header_key'
  *    'header_token'
  *
@@ -370,13 +355,13 @@ function wds_rest_connect_ui_get_setting( $field_id = '', $default = false ) {
  *
  * @since  0.1.0
  *
- * @return WP_Error|WDS_WP_REST_API_Connect The API object or WP_Error.
+ * @return WP_Error|Connect The API object or WP_Error.
  */
 function wds_rest_connect_ui_api_object() {
 	$settings = wds_rest_connect_ui()->settings;
 	$api = $settings->api();
 
-	if ( '' === $api->key ) {
+	if ( '' === $api->key() ) {
 		$error = sprintf( __( 'API connection is not properly authenticated. Authenticate via the <a href="%s">settings page</a>.', 'wds-rest-connect-ui' ), $settings->settings_url() );
 
 		return new WP_Error( 'wds_rest_connect_ui_api_fail', $error );
@@ -392,8 +377,8 @@ function wds_rest_connect_ui_api_object() {
  *
  * `$api = apply_filters( 'wds_rest_connect_ui_api_object', null );`
  *
- * Then check for WDS_WP_REST_API_Connect or WP_Error value before proceeding:
- * `if ( is_a( $api, 'WDS_WP_REST_API_Connect' ) ) { $schema = $api->auth_get_request(); }`
+ * Then check for Connect or WP_Error value before proceeding:
+ * `if ( is_a( $api, 'WDS_WP_REST_API\OAuth1\Connect' ) ) { $schema = $api->auth_get_request(); }`
  *
  */
 add_filter( 'wds_rest_connect_ui_api_object', 'wds_rest_connect_ui_api_object' );

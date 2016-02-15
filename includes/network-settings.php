@@ -38,6 +38,17 @@ class WDSRESTCUI_Network_Settings extends WDSRESTCUI_Settings {
 	}
 
 	/**
+	 * Deletes all settings and connection settings.
+	 *
+	 * @since  0.2.0
+	 */
+	public function delete_all_and_redirect() {
+		$this->api()->reset_connection();
+		delete_site_option( $this->key );
+		$this->redirect();
+	}
+
+	/**
 	 * Replaces get_option with get_site_option
 	 * @since  0.1.0
 	 */
@@ -61,6 +72,15 @@ class WDSRESTCUI_Network_Settings extends WDSRESTCUI_Settings {
 		return update_site_option( $this->key, $option_value );
 	}
 
+	/**
+	 * This network settings page's URL with any specified query args
+	 *
+	 * @since  0.1.0
+	 *
+	 * @param  array   $args Optional array of query args
+	 *
+	 * @return string        Settings page URL.
+	 */
 	public function settings_url( $args = array() ) {
 		$args['page'] = $this->key;
 		return esc_url_raw( add_query_arg( $args, network_admin_url( 'admin.php' ) ) );
