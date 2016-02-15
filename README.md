@@ -14,7 +14,7 @@ Provides UI for connecting from one WordPress installation to another via the [W
 
 #### Caveats:
 
-* To use this plugin, you will need to run `composer install` from the root of the plugin to pull in the required dependencies.
+* To use this plugin, you will need to run `composer install` from the root of the plugin to pull in the required dependencies, or [download this zip](https://raw.githubusercontent.com/WebDevStudios/WDS-WP-REST-API-Connect-UI/master/wds-rest-connect-ui.zip).
 * Both the [WP REST API plugin](https://github.com/WP-API/WP-API) and the [OAuth plugin](https://github.com/WP-API/OAuth1) are required to be on the server you are connecting to.
 * You'll need to create a '[Client Application](http://v2.wp-api.org/guide/authentication/#oauth-authentication)' on the server. You'll be given instructions from this plugin's settings page after you save the server URL.
 
@@ -49,8 +49,10 @@ if ( is_a( $api, 'WDS_WP_REST_API\OAuth1\Connect' ) ) {
 
 1. Upload the entire `/wds-rest-connect-ui` directory to the `/wp-content/plugins/` directory.
 2. Run `composer install` inside the `/wp-content/plugins/wds-rest-connect-ui` directory.
-2. Activate WDS WP REST API Connect UI through the 'Plugins' menu in WordPress.
-3. Update the connection settings.
+3. Activate WDS WP REST API Connect UI through the 'Plugins' menu in WordPress.
+4. Update the connection settings.
+
+To avoid step 2, [download this zip](https://raw.githubusercontent.com/WebDevStudios/WDS-WP-REST-API-Connect-UI/master/wds-rest-connect-ui.zip), unzip the file and follow steps 1, 3, and 4.
 
 ## Frequently Asked Questions ##
 
