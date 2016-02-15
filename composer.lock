@@ -325,12 +325,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WebDevStudios/WDS-WP-REST-API-Connect.git",
-                "reference": "0f133fb3efdb9c1e41272baf9d498026342efced"
+                "reference": "f0ab9527b579c20bc355351586825d594e5014a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WebDevStudios/WDS-WP-REST-API-Connect/zipball/0f133fb3efdb9c1e41272baf9d498026342efced",
-                "reference": "0f133fb3efdb9c1e41272baf9d498026342efced",
+                "url": "https://api.github.com/repos/WebDevStudios/WDS-WP-REST-API-Connect/zipball/f0ab9527b579c20bc355351586825d594e5014a5",
+                "reference": "f0ab9527b579c20bc355351586825d594e5014a5",
                 "shasum": ""
             },
             "require": {
@@ -366,7 +366,7 @@
                 "wordpress",
                 "wp-api"
             ],
-            "time": "2016-02-15 18:05:35"
+            "time": "2016-02-15 18:55:08"
         },
         {
             "name": "wp-api/discovery",
