@@ -19,11 +19,12 @@
     },
     "require": {
         "php": ">5.3",
-        "webdevstudios/wds-wp-json-api-connect": "dev-master",
+        "webdevstudios/wds-wp-json-api-connect": "^v0.2.0",
         "webdevstudios/cmb2": "dev-master"
     },
     "autoload": {
         "classmap": ["vendor/webdevstudios/wds-wp-json-api-connect/wds-wp-rest-api-connect.php","includes"],
         "files": ["vendor/webdevstudios/cmb2/init.php"]
-    }
+    },
+    "minimum-stability": "dev"
 }
