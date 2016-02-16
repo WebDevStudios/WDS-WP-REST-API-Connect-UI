@@ -281,28 +281,26 @@ class WDSRESTCUI_Settings {
 		) );
 
 		// No URL? then wait...
-		if ( empty( $url ) || empty( $api_url ) ) {
-			return;
+		if ( ! empty( $url ) && ! empty( $api_url ) ) {
+			$cmb->add_field( array(
+				'name'       => __( 'Client Key', 'wds-rest-connect-ui' ),
+				'before_row' => '<p class="description"><a target="_blank" href="'. trailingslashit( $url ) .'wp-admin/users.php?page=rest-oauth1-apps">' . __( 'Manage registered applications', 'wds-rest-connect-ui' ) . '</a> or <a target="_blank" href="https://github.com/WP-API/client-cli#step-1-creating-a-consumer">' . __( 'learn how to get client credentials via WPCLI', 'wds-rest-connect-ui' ) . '</a>.</p><p >' . __( 'The application callback URL for the application registration needs to be: ', 'wds-rest-connect-ui' ) . '<br><code>' . $this->settings_url() . '</code></p>',
+				'id'         => 'consumer_key',
+				'type'       => 'text',
+				'attributes' => array(
+					'required' => 'required',
+				),
+			) );
+
+			$cmb->add_field( array(
+				'name' => __( 'Client Secret', 'wds-rest-connect-ui' ),
+				'id'   => 'consumer_secret',
+				'type' => 'text',
+				'attributes' => array(
+					'required' => 'required',
+				),
+			) );
 		}
-
-		$cmb->add_field( array(
-			'name'       => __( 'Client Key', 'wds-rest-connect-ui' ),
-			'before_row' => '<p class="description"><a target="_blank" href="'. trailingslashit( $url ) .'wp-admin/users.php?page=rest-oauth1-apps">' . __( 'Manage registered applications', 'wds-rest-connect-ui' ) . '</a> or <a target="_blank" href="https://github.com/WP-API/client-cli#step-1-creating-a-consumer">' . __( 'learn how to get client credentials via WPCLI', 'wds-rest-connect-ui' ) . '</a>.</p><p >' . __( 'The application callback URL for the application registration needs to be: ', 'wds-rest-connect-ui' ) . '<br><code>' . $this->settings_url() . '</code></p>',
-			'id'         => 'consumer_key',
-			'type'       => 'text',
-			'attributes' => array(
-				'required' => 'required',
-			),
-		) );
-
-		$cmb->add_field( array(
-			'name' => __( 'Client Secret', 'wds-rest-connect-ui' ),
-			'id'   => 'consumer_secret',
-			'type' => 'text',
-			'attributes' => array(
-				'required' => 'required',
-			),
-		) );
 
 		$cmb->add_field( array(
 			'name' => __( 'Optional Headers', 'wds-rest-connect-ui' ),
@@ -884,6 +882,10 @@ class WDSRESTCUI_Settings {
 			empty( $all )
 			|| ! $this->get( 'api_url' )
 		) {
+			if ( $this->get( 'header_key' ) && $this->get( 'header_token' ) ) {
+				$this->api->set_headers( array( $this->get( 'header_key' ) => $this->get( 'header_token' ) ) );
+			}
+
 			return $this->api;
 		}
 
