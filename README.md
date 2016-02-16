@@ -4,7 +4,7 @@
 **Tags:**  
 **Requires at least:** 4.4.2  
 **Tested up to:**      4.4.2  
-**Stable tag:**        0.2.1  
+**Stable tag:**        0.2.2  
 **License:**           GPLv2  
 **License URI:**       http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -69,6 +69,10 @@ To avoid step 2, [download this zip](https://raw.githubusercontent.com/WebDevStu
 ![Successful authentication notice which demonstrates available routes.](https://raw.githubusercontent.com/WebDevStudios/WDS-WP-REST-API-Connect-UI/master/screenshot-3.png)
 
 ## Changelog ##
+
+### 0.2.2
+* The Optional Headers fields are now available for all steps, to ensure proper headers are sent during discovery.
+* Update the wds-wp-rest-api-connect dependency, so that we use our own API Discovery library to use the WP http API, and to correctly pass any headers if they exist.
 
 ### 0.2.1 ###
 * Update composer files to point to correct packagist repo for WDS WP REST API Connect.
