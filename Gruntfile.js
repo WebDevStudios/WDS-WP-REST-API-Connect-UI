@@ -76,7 +76,7 @@ module.exports = function( grunt ) {
 
 		// Command line commands
 		exec: {
-			makezip: 'echo "Updating .zip file. Please hold..." && grunt compress',
+			makezip: 'echo "Updating .zip file. Please hold..." && grunt',
 		},
 
 		// make a zipfile
