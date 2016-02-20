@@ -2,10 +2,10 @@
 # This file is distributed under the GPLv2.
 msgid ""
 msgstr ""
-"Project-Id-Version: WDS WP REST API Connect UI 0.2.1\n"
+"Project-Id-Version: WDS WP REST API Connect UI 0.2.3\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/wds-rest-connect-ui\n"
-"POT-Creation-Date: 2016-02-15 21:51:39+00:00\n"
+"POT-Creation-Date: 2016-02-20 21:46:07+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,143 +26,143 @@ msgstr ""
 msgid "Begin Authorization"
 msgstr ""
 
-#: includes/settings.php:260
+#: includes/settings.php:251
 msgid "WordPress Site URL"
 msgstr ""
 
-#: includes/settings.php:261
+#: includes/settings.php:252
 msgid "Site must have the %s and %s plugins installed."
 msgstr ""
 
-#: includes/settings.php:270
+#: includes/settings.php:261
 msgid "Step 1: Find the API"
 msgstr ""
 
-#: includes/settings.php:271
+#: includes/settings.php:262
 msgid "Enter WordPress Site URL to start discovery"
 msgstr ""
 
-#: includes/settings.php:273
+#: includes/settings.php:264
 msgid "Step 2: Input Credentials"
 msgstr ""
 
-#: includes/settings.php:289
+#: includes/settings.php:277
 msgid "Client Key"
 msgstr ""
 
-#: includes/settings.php:290
+#: includes/settings.php:278
 msgid "Manage registered applications"
 msgstr ""
 
-#: includes/settings.php:290
+#: includes/settings.php:278
 msgid "learn how to get client credentials via WPCLI"
 msgstr ""
 
-#: includes/settings.php:290
+#: includes/settings.php:278
 msgid "The application callback URL for the application registration needs to be: "
 msgstr ""
 
-#: includes/settings.php:299
+#: includes/settings.php:287
 msgid "Client Secret"
 msgstr ""
 
-#: includes/settings.php:308
+#: includes/settings.php:297
 msgid "Optional Headers"
 msgstr ""
 
-#: includes/settings.php:309
+#: includes/settings.php:298
 msgid ""
 "If the WordPress API requires a Header Key/Token for access, i.e. <a "
 "href=\"https://github.com/WebDevStudios/WDS-Allow-REST-API\">WDS Allow REST "
 "API</a>."
 msgstr ""
 
-#: includes/settings.php:315
+#: includes/settings.php:304
 msgid "Header Key"
 msgstr ""
 
-#: includes/settings.php:321
+#: includes/settings.php:310
 msgid "Header Token"
 msgstr ""
 
-#: includes/settings.php:409
+#: includes/settings.php:424
 msgid "Settings updated."
 msgstr ""
 
-#: includes/settings.php:572 includes/settings.php:699
+#: includes/settings.php:589 includes/settings.php:722
 msgid "Dismiss Errors"
 msgstr ""
 
-#: includes/settings.php:592
+#: includes/settings.php:609
 msgid "Authenticated User"
 msgstr ""
 
-#: includes/settings.php:593
+#: includes/settings.php:610
 msgid "Details"
 msgstr ""
 
-#: includes/settings.php:594
+#: includes/settings.php:611
 #: vendor/webdevstudios/cmb2/example-functions.php:435
 msgid "Description"
 msgstr ""
 
-#: includes/settings.php:601
+#: includes/settings.php:618
 msgid "View posts"
 msgstr ""
 
-#: includes/settings.php:605
+#: includes/settings.php:622
 msgid "First Name"
 msgstr ""
 
-#: includes/settings.php:607
+#: includes/settings.php:624
 msgid "Last Name"
 msgstr ""
 
-#: includes/settings.php:609
+#: includes/settings.php:626
 msgid "Email"
 msgstr ""
 
-#: includes/settings.php:634
+#: includes/settings.php:651
 msgid "Connected Site Name"
 msgstr ""
 
-#: includes/settings.php:635
+#: includes/settings.php:652
 msgid "Connected Site Description"
 msgstr ""
 
-#: includes/settings.php:651
+#: includes/settings.php:668
 msgid "Available Routes:"
 msgstr ""
 
-#: includes/settings.php:659
+#: includes/settings.php:676
 msgid "Dismiss"
 msgstr ""
 
-#: includes/settings.php:659
+#: includes/settings.php:676
 msgid "Re-authenticate"
 msgstr ""
 
-#: includes/settings.php:678
+#: includes/settings.php:701
 msgid "Click here to authenticate"
 msgstr ""
 
-#: includes/settings.php:680
+#: includes/settings.php:703
 msgid "You're almost there."
 msgstr ""
 
-#: includes/settings.php:722
+#: includes/settings.php:745
 msgid "Check API Connection"
 msgstr ""
 
-#: includes/settings.php:748
+#: includes/settings.php:771
 msgid "Reset All Settings"
 msgstr ""
 
-#: includes/settings.php:774
+#: includes/settings.php:797
 msgid "ERROR:"
 msgstr ""
 
-#: includes/settings.php:775
+#: includes/settings.php:798
 msgid "SUCCESS:"
 msgstr ""
 
@@ -659,42 +659,63 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:192
+#: vendor/webdevstudios/wds-wp-rest-api-connect/example.php:91
+msgid "Reset Connection"
+msgstr ""
+
+#: vendor/webdevstudios/wds-wp-rest-api-connect/lib/server.php:227
+msgid "It is possible the Callback URL is invalid. Please check."
+msgstr ""
+
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:199
 msgid "There is a problem with the provided api_url parameter. %s."
 msgstr ""
 
-#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:197
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:204
 msgid "Couldn't find the API at <code>%s</code>."
 msgstr ""
 
-#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:203
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:210
 msgid "Site doesn't appear to support OAuth 1.0a authentication."
 msgstr ""
 
-#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:225
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:232
 msgid "Please call %s."
 msgstr ""
 
-#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:305
-#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:638
-#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:746
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:236
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:318
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:671
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:775
 msgid "Missing client key."
 msgstr ""
 
-#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:336
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:245
+msgid "There was a problem fetching the temporary credentials: %s"
+msgstr ""
+
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:349
 msgid "Couldn't find the API temporary credentials."
 msgstr ""
 
-#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:369
-#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:642
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:366
+msgid "There was a problem completing authorization: %s"
+msgstr ""
+
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:389
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:675
 msgid "Authorization has not yet been granted."
 msgstr ""
 
-#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:751
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:700
+msgid "Received error [%s] with status code [%s] when making request."
+msgstr ""
+
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:780
 msgid "There was a problem connecting to the API URL specified."
 msgstr ""
 
-#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:777
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:806
 msgid "Could not retrive body from URL: \"%s\""
 msgstr ""
 
