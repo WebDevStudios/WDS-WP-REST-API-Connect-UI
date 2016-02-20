@@ -341,7 +341,11 @@ class WDSRESTCUI_Settings {
 
 		$api_url = false;
 		if ( ! $this->get( 'api_url' ) && ! empty( $_POST['url'] ) ) {
-			$result = $this->api()->do_discovery( $_POST['url'] );
+
+			$header_key   = sanitize_text_field( $_POST['header_key'] );
+			$header_token = sanitize_text_field( $_POST['header_token'] );
+			$result = $this->do_discovery( $_POST['url'], $header_key, $header_token );
+
 			if ( ! is_wp_error( $result ) ) {
 				$_POST['api_url'] = $api_url = $result;
 			}
@@ -861,6 +865,15 @@ class WDSRESTCUI_Settings {
 		}
 
 		return $value;
+	}
+
+	public function do_discovery( $url, $header_key = false, $header_token = false ) {
+		$api = $this->api();
+		if ( $header_key && $header_token ) {
+			$api->set_headers( array( $header_key => $header_token ) );
+		}
+
+		return $api->do_discovery( $url );
 	}
 
 	/**
