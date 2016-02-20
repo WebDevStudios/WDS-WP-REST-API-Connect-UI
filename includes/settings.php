@@ -681,7 +681,13 @@ class WDSRESTCUI_Settings {
 	 * @return bool              Failed connection.
 	 */
 	public function need_to_authenticate_message( $request ) {
-		$authenticate = '<p><a class="button-secondary" href="'. esc_url( $request->get_error_data() ) .'">' . __( 'Click here to authenticate', 'wds-rest-connect-ui' ) . '</a></p>';
+
+		$url = $this->api()->get_authorization_url();
+		if ( is_wp_error( $url ) ) {
+			return false;
+		}
+
+		$authenticate = '<p><a class="button-secondary" href="'. esc_url( $url ) .'">' . __( 'Click here to authenticate', 'wds-rest-connect-ui' ) . '</a></p>';
 
 		$this->register_notice( $authenticate, false, __( "You're almost there.", 'wds-rest-connect-ui' ) );
 
