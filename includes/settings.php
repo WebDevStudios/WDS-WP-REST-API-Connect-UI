@@ -475,7 +475,7 @@ class WDSRESTCUI_Settings {
 	 * @return void
 	 */
 	public function reauth_and_redirect() {
-		$this->api()->delete_option();
+		$this->api()->delete_option( 'token_credentials' );
 		$this->api()->delete_stored_error();
 		$this->redirect( array( 'check_credentials' => 1 ) );
 	}
