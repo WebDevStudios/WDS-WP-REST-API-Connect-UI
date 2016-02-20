@@ -232,28 +232,19 @@ class WDSRESTCUI_Settings {
 		}
 
 
-		$url = $this->get( 'url' );
-		$api_url = $this->get( 'api_url' );
-		$key = $this->get( 'consumer_key' );
 
-		if ( ! empty( $_POST ) ) {
+		$url     = $this->get_current_value( 'url', 'esc_url_raw' );
+		$api_url = $this->get_current_value( 'api_url', 'esc_url_raw' );
+		$key     = $this->get_current_value( 'consumer_key', 'sanitize_text_field' );
 
-			$url = ! empty( $_POST['url'] )
-				? esc_url_raw( $_POST['url'] )
-				: false;
+		if ( $url && ! $this->api()->discovered() ) {
+			$header_key = $this->get_current_value( 'header_key', 'sanitize_text_field' );
+			$header_token = $this->get_current_value( 'header_token', 'sanitize_text_field' );
+			$result = $this->do_discovery( $url, $header_key, $header_token );
 
-			$api_url = ! empty( $_POST['api_url'] )
-				? esc_url_raw( $_POST['api_url'] )
-				: false;
-
-			$key = ! empty( $_POST['consumer_key'] )
-				? sanitize_text_field( $_POST['consumer_key'] )
-				: false;
-
-		}
-
-		if ( $url && empty( $this->api()->auth_urls ) ) {
-			$this->api()->do_discovery( $url );
+			if ( ! is_wp_error( $result ) ) {
+				$api_url = $result;
+			}
 		}
 
 		$args = array(
@@ -320,6 +311,17 @@ class WDSRESTCUI_Settings {
 			'id'   => 'header_token',
 			'type' => 'text',
 		) );
+	}
+
+	public function get_current_value( $key, $sanitize ) {
+		$value = $this->get( $key );
+		if ( ! $value ) {
+			$value = ! empty( $_POST[ $key ] )
+				? $sanitize( $_POST[ $key ] )
+				: false;
+		}
+
+		return $value;
 	}
 
 	/**
