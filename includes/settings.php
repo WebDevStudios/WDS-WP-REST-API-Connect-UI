@@ -313,11 +313,22 @@ class WDSRESTCUI_Settings {
 		) );
 	}
 
-	public function get_current_value( $key, $sanitize ) {
+	/**
+	 * Get the current value from the database or the POSTed data.
+	 * Will be sanitized using $sanitizer if collecting from POSTed data.
+	 *
+	 * @since  0.2.3
+	 *
+	 * @param  string  $key       option key
+	 * @param  string  $sanitizer Sanitizer function
+	 *
+	 * @return mixed              Value
+	 */
+	public function get_current_value( $key, $sanitizer ) {
 		$value = $this->get( $key );
 		if ( ! $value ) {
 			$value = ! empty( $_POST[ $key ] )
-				? $sanitize( $_POST[ $key ] )
+				? $sanitizer( $_POST[ $key ] )
 				: false;
 		}
 
@@ -877,6 +888,17 @@ class WDSRESTCUI_Settings {
 		return $value;
 	}
 
+	/**
+	 * Wrapper for the api do_discovery method which sets the headers if we have them.
+	 *
+	 * @since  0.2.3
+	 *
+	 * @param  string  $url          URL for discovery
+	 * @param  boolean $header_key   Value for header key if we have it
+	 * @param  boolean $header_token Value for header token if we have it
+	 *
+	 * @return mixed                 Result of WDS_WP_REST_API\OAuth1\Connect::do_discovery
+	 */
 	public function do_discovery( $url, $header_key = false, $header_token = false ) {
 		$api = $this->api();
 		if ( $header_key && $header_token ) {
@@ -914,9 +936,9 @@ class WDSRESTCUI_Settings {
 
 		$args['client_key']    = $this->get( 'consumer_key' );
 		$args['client_secret'] = $this->get( 'consumer_secret' );
-		$args['api_url']         = $this->get( 'api_url' );
-		// $args['auth_urls']       = get_option( $this->key . '_urls' );
-		$args['callback_uri']    = $this->settings_url();
+		$args['api_url']       = $this->get( 'api_url' );
+		// $args['auth_urls']  = get_option( $this->key . '_urls' );
+		$args['callback_uri']  = $this->settings_url();
 
 		if ( $this->get( 'header_key' ) && $this->get( 'header_token' ) ) {
 			$args['headers'] = array( $this->get( 'header_key' ) => $this->get( 'header_token' ) );
