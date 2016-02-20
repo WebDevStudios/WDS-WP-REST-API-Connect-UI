@@ -450,8 +450,10 @@ class WDSRESTCUI_Settings {
 			return;
 		}
 
-		// Add a "check credentials" button next to the "save" button.
-		add_filter( 'cmb2_get_metabox_form_format', array( $this, 'add_check_connection_button' ), 10, 2 );
+		if ( $this->get( 'consumer_key' ) ) {
+			// Add a "check credentials" button next to the "save" button.
+			add_filter( 'cmb2_get_metabox_form_format', array( $this, 'add_check_connection_button' ), 10, 2 );
+		}
 	}
 
 	/**
