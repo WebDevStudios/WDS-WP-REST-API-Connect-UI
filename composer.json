@@ -19,7 +19,7 @@
     },
     "require": {
         "php": ">5.3",
-        "webdevstudios/wds-wp-rest-api-connect": "^v0.2.3",
+        "webdevstudios/wds-wp-rest-api-connect": "^v0.2.4",
         "webdevstudios/cmb2": "dev-master"
     },
     "autoload": {

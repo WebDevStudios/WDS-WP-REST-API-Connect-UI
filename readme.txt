@@ -4,7 +4,7 @@ Donate link:       http://webdevstudios.com
 Tags:
 Requires at least: 4.4.2
 Tested up to:      4.4.2
-Stable tag:        0.2.3
+Stable tag:        0.2.4
 License:           GPLv2
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -63,6 +63,9 @@ if ( is_a( $api, 'WDS_WP_REST_API\OAuth1\Connect' ) ) {
 3. Successful authentication notice which demonstrates available routes.
 
 == Changelog ==
+
+= 0.2.4 =
+* Update the wds-wp-rest-api-connect dependency to fix some bugs and in the `auth_request` method.
 
 = 0.2.3 =
 * Fix some authentication step logic, and ensure discovery is not called too often.

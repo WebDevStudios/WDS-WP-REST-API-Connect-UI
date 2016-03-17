@@ -2,10 +2,10 @@
 # This file is distributed under the GPLv2.
 msgid ""
 msgstr ""
-"Project-Id-Version: WDS WP REST API Connect UI 0.2.3\n"
+"Project-Id-Version: WDS WP REST API Connect UI 0.2.4\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/wds-rest-connect-ui\n"
-"POT-Creation-Date: 2016-02-20 21:46:07+00:00\n"
+"POT-Creation-Date: 2016-03-17 00:42:38+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -418,7 +418,6 @@ msgid "Image Caption"
 msgstr ""
 
 #: vendor/webdevstudios/cmb2/example-functions.php:467
-#: vendor/webdevstudios/cmb2/example-functions.php:537
 msgid "User Profile Metabox"
 msgstr ""
 
@@ -451,6 +450,10 @@ msgstr ""
 msgid "User Field"
 msgstr ""
 
+#: vendor/webdevstudios/cmb2/example-functions.php:537
+msgid "Category Metabox"
+msgstr ""
+
 #: vendor/webdevstudios/cmb2/example-functions.php:552
 msgid "Term Image"
 msgstr ""
@@ -475,30 +478,30 @@ msgstr ""
 msgid "Click to toggle"
 msgstr ""
 
-#: vendor/webdevstudios/cmb2/includes/CMB2_Ajax.php:40
+#: vendor/webdevstudios/cmb2/includes/CMB2_Ajax.php:71
 msgid "Please Try Again"
 msgstr ""
 
-#: vendor/webdevstudios/cmb2/includes/CMB2_Ajax.php:135
-#: vendor/webdevstudios/cmb2/tests/test-cmb-types.php:835
+#: vendor/webdevstudios/cmb2/includes/CMB2_Ajax.php:161
+#: vendor/webdevstudios/cmb2/tests/cmb-tests-base.php:59
 msgid "Remove Embed"
 msgstr ""
 
-#: vendor/webdevstudios/cmb2/includes/CMB2_Ajax.php:139
-#: vendor/webdevstudios/cmb2/tests/test-cmb-types.php:836
+#: vendor/webdevstudios/cmb2/includes/CMB2_Ajax.php:165
+#: vendor/webdevstudios/cmb2/tests/cmb-tests-base.php:64
 msgid "No oEmbed Results Found for %s. View more info at"
 msgstr ""
 
-#: vendor/webdevstudios/cmb2/includes/CMB2_Field.php:1030
+#: vendor/webdevstudios/cmb2/includes/CMB2_Field.php:1056
 msgid "Add Group"
 msgstr ""
 
-#: vendor/webdevstudios/cmb2/includes/CMB2_Field.php:1031
+#: vendor/webdevstudios/cmb2/includes/CMB2_Field.php:1057
 msgid "Remove Group"
 msgstr ""
 
-#: vendor/webdevstudios/cmb2/includes/CMB2_Field.php:1053
-#: vendor/webdevstudios/cmb2/includes/CMB2_Field.php:1057
+#: vendor/webdevstudios/cmb2/includes/CMB2_Field.php:1079
+#: vendor/webdevstudios/cmb2/includes/CMB2_Field.php:1083
 #: vendor/webdevstudios/cmb2/tests/test-cmb-field.php:265
 msgid "None"
 msgstr ""
@@ -592,13 +595,13 @@ msgid "Use these files"
 msgstr ""
 
 #: vendor/webdevstudios/cmb2/includes/CMB2_JS.php:137
-#: vendor/webdevstudios/cmb2/includes/CMB2_Types.php:1021
+#: vendor/webdevstudios/cmb2/includes/CMB2_Types.php:1019
 msgid "Remove Image"
 msgstr ""
 
 #: vendor/webdevstudios/cmb2/includes/CMB2_JS.php:138
-#: vendor/webdevstudios/cmb2/includes/CMB2_Types.php:357
-#: vendor/webdevstudios/cmb2/includes/CMB2_Types.php:1040
+#: vendor/webdevstudios/cmb2/includes/CMB2_Types.php:354
+#: vendor/webdevstudios/cmb2/includes/CMB2_Types.php:1038
 #: vendor/webdevstudios/cmb2/tests/test-cmb-types.php:155
 #: vendor/webdevstudios/cmb2/tests/test-cmb-types.php:163
 #: vendor/webdevstudios/cmb2/tests/test-cmb-types.php:780
@@ -607,14 +610,14 @@ msgid "Remove"
 msgstr ""
 
 #: vendor/webdevstudios/cmb2/includes/CMB2_JS.php:139
-#: vendor/webdevstudios/cmb2/includes/CMB2_Types.php:1035
+#: vendor/webdevstudios/cmb2/includes/CMB2_Types.php:1033
 #: vendor/webdevstudios/cmb2/tests/test-cmb-types.php:780
 #: vendor/webdevstudios/cmb2/tests/test-cmb-types.php:807
 msgid "File:"
 msgstr ""
 
 #: vendor/webdevstudios/cmb2/includes/CMB2_JS.php:140
-#: vendor/webdevstudios/cmb2/includes/CMB2_Types.php:1038
+#: vendor/webdevstudios/cmb2/includes/CMB2_Types.php:1036
 #: vendor/webdevstudios/cmb2/tests/test-cmb-types.php:780
 #: vendor/webdevstudios/cmb2/tests/test-cmb-types.php:807
 msgid "Download"
@@ -624,38 +627,38 @@ msgstr ""
 msgid "Select / Deselect All"
 msgstr ""
 
-#: vendor/webdevstudios/cmb2/includes/CMB2_Types.php:298
+#: vendor/webdevstudios/cmb2/includes/CMB2_Types.php:295
 msgid "Add Row"
 msgstr ""
 
-#: vendor/webdevstudios/cmb2/includes/CMB2_Types.php:768
-#: vendor/webdevstudios/cmb2/includes/CMB2_Types.php:816
+#: vendor/webdevstudios/cmb2/includes/CMB2_Types.php:766
+#: vendor/webdevstudios/cmb2/includes/CMB2_Types.php:814
 msgid "No terms"
 msgstr ""
 
-#: vendor/webdevstudios/cmb2/includes/CMB2_Types.php:884
+#: vendor/webdevstudios/cmb2/includes/CMB2_Types.php:882
 #: vendor/webdevstudios/cmb2/tests/test-cmb-types.php:737
 #: vendor/webdevstudios/cmb2/tests/test-cmb-types.php:761
 msgid "Add or Upload Files"
 msgstr ""
 
-#: vendor/webdevstudios/cmb2/includes/CMB2_Types.php:945
+#: vendor/webdevstudios/cmb2/includes/CMB2_Types.php:943
 #: vendor/webdevstudios/cmb2/tests/test-cmb-types.php:789
 #: vendor/webdevstudios/cmb2/tests/test-cmb-types.php:807
 msgid "Add or Upload File"
 msgstr ""
 
-#: vendor/webdevstudios/cmb2/includes/CMB2_hookup.php:124
+#: vendor/webdevstudios/cmb2/includes/CMB2_hookup.php:120
 msgid ""
 "Term Metadata is a WordPress > 4.4 feature. Please upgrade your WordPress "
 "install."
 msgstr ""
 
-#: vendor/webdevstudios/cmb2/includes/CMB2_hookup.php:128
+#: vendor/webdevstudios/cmb2/includes/CMB2_hookup.php:124
 msgid "Term metaboxes configuration requires a 'taxonomies' parameter"
 msgstr ""
 
-#: vendor/webdevstudios/cmb2/includes/helper-functions.php:250
+#: vendor/webdevstudios/cmb2/includes/helper-functions.php:248
 msgid "Save"
 msgstr ""
 
@@ -667,55 +670,55 @@ msgstr ""
 msgid "It is possible the Callback URL is invalid. Please check."
 msgstr ""
 
-#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:199
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:204
 msgid "There is a problem with the provided api_url parameter. %s."
 msgstr ""
 
-#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:204
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:209
 msgid "Couldn't find the API at <code>%s</code>."
 msgstr ""
 
-#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:210
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:215
 msgid "Site doesn't appear to support OAuth 1.0a authentication."
 msgstr ""
 
-#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:232
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:237
 msgid "Please call %s."
 msgstr ""
 
-#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:236
-#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:318
-#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:671
-#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:775
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:241
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:323
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:676
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:777
 msgid "Missing client key."
 msgstr ""
 
-#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:245
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:250
 msgid "There was a problem fetching the temporary credentials: %s"
 msgstr ""
 
-#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:349
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:354
 msgid "Couldn't find the API temporary credentials."
 msgstr ""
 
-#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:366
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:371
 msgid "There was a problem completing authorization: %s"
 msgstr ""
 
-#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:389
-#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:675
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:394
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:680
 msgid "Authorization has not yet been granted."
 msgstr ""
 
-#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:700
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:705
 msgid "Received error [%s] with status code [%s] when making request."
 msgstr ""
 
-#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:780
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:782
 msgid "There was a problem connecting to the API URL specified."
 msgstr ""
 
-#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:806
+#: vendor/webdevstudios/wds-wp-rest-api-connect/wds-wp-rest-api-connect.php:808
 msgid "Could not retrive body from URL: \"%s\""
 msgstr ""
 

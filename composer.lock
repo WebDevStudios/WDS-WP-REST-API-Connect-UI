@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "302e68795785921470d6594fe9e0d02a",
-    "content-hash": "8035047eb149d0feeb5901347c3e3f99",
+    "hash": "8f6a41a14f97dfd90a0c18a0561a3c79",
+    "content-hash": "30b3bb189c09698f73f15cf98c7e4814",
     "packages": [
         {
             "name": "guzzle/guzzle",
@@ -220,12 +220,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "78c468665c9568c3faaa9c416a7134308f2d85c3"
+                "reference": "47d2d8cade9b1c3987573d2943bb9352536cdb87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/78c468665c9568c3faaa9c416a7134308f2d85c3",
-                "reference": "78c468665c9568c3faaa9c416a7134308f2d85c3",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/47d2d8cade9b1c3987573d2943bb9352536cdb87",
+                "reference": "47d2d8cade9b1c3987573d2943bb9352536cdb87",
                 "shasum": ""
             },
             "require": {
@@ -272,7 +272,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2016-01-27 05:14:19"
+            "time": "2016-03-07 14:04:32"
         },
         {
             "name": "webdevstudios/cmb2",
@@ -280,12 +280,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WebDevStudios/CMB2.git",
-                "reference": "a17c726bef102b17bedb7b0a4ee95e1b1816fa72"
+                "reference": "5f30a5bed235a7292feb53a355d1ee8fab7f84a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WebDevStudios/CMB2/zipball/a17c726bef102b17bedb7b0a4ee95e1b1816fa72",
-                "reference": "a17c726bef102b17bedb7b0a4ee95e1b1816fa72",
+                "url": "https://api.github.com/repos/WebDevStudios/CMB2/zipball/5f30a5bed235a7292feb53a355d1ee8fab7f84a6",
+                "reference": "5f30a5bed235a7292feb53a355d1ee8fab7f84a6",
                 "shasum": ""
             },
             "require": {
@@ -317,20 +317,20 @@
                 "plugin",
                 "wordpress"
             ],
-            "time": "2016-01-31 22:00:11"
+            "time": "2016-03-15 16:00:58"
         },
         {
             "name": "webdevstudios/wds-wp-rest-api-connect",
-            "version": "v0.2.3",
+            "version": "v0.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WebDevStudios/WDS-WP-REST-API-Connect.git",
-                "reference": "f13b7120be789e04a169441064a4cae0d49debaf"
+                "reference": "35a24e8466f35985f2503df07969a1fc29761d99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WebDevStudios/WDS-WP-REST-API-Connect/zipball/f13b7120be789e04a169441064a4cae0d49debaf",
-                "reference": "f13b7120be789e04a169441064a4cae0d49debaf",
+                "url": "https://api.github.com/repos/WebDevStudios/WDS-WP-REST-API-Connect/zipball/35a24e8466f35985f2503df07969a1fc29761d99",
+                "reference": "35a24e8466f35985f2503df07969a1fc29761d99",
                 "shasum": ""
             },
             "require": {
@@ -366,7 +366,7 @@
                 "wordpress",
                 "wp-api"
             ],
-            "time": "2016-02-18 19:55:54"
+            "time": "2016-03-17 00:36:51"
         }
     ],
     "packages-dev": [],

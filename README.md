@@ -4,7 +4,7 @@
 **Tags:**  
 **Requires at least:** 4.4.2  
 **Tested up to:**      4.4.2  
-**Stable tag:**        0.2.3  
+**Stable tag:**        0.2.4  
 **License:**           GPLv2  
 **License URI:**       http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -69,6 +69,9 @@ To avoid step 2, [download this zip](https://raw.githubusercontent.com/WebDevStu
 ![Successful authentication notice which demonstrates available routes.](https://raw.githubusercontent.com/WebDevStudios/WDS-WP-REST-API-Connect-UI/master/screenshot-3.png)
 
 ## Changelog ##
+
+### 0.2.4
+* Update the wds-wp-rest-api-connect dependency to fix some bugs and in the `auth_request` method.
 
 ### 0.2.3
 * Fix some authentication step logic, and ensure discovery is not called too often.
