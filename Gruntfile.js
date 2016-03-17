@@ -107,7 +107,8 @@ module.exports = function( grunt ) {
 							'!vendor/rmccue/requests/examples/**',
 							'!vendor/symfony/event-dispatcher/Tests/**',
 							'!vendor/guzzle/guzzle/phing/**',
-							'!vendor/guzzle/guzzle/docs/**'
+							'!vendor/guzzle/guzzle/docs/**',
+							'!vendor/webdevstudios/wds-wp-rest-api-connect/vendor/**'
 						],
 						dest: '/'
 				} ]
