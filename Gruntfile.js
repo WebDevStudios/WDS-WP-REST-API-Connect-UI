@@ -110,7 +110,7 @@ module.exports = function( grunt ) {
 							'!vendor/guzzle/guzzle/docs/**',
 							'!vendor/webdevstudios/wds-wp-rest-api-connect/vendor/**'
 						],
-						dest: '/'
+						dest: '/wds-rest-connect-ui'
 				} ]
 			}
 		},
